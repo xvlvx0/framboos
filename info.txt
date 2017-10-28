@@ -1,0 +1,10 @@
+https://www.debian.org/releases/
+http://downloads.raspberrypi.org/raspbian/images/
+
+https://azeria-labs.com/emulate-raspberry-pi-with-qemu/
+(https://3mdeb.com/os-dev/emulate-rapberry-pi-2-in-qemu/)
+
+https://github.com/dhruvvyas90/qemu-rpi-kernel/wiki
+https://github.com/dhruvvyas90/qemu-rpi-kernel
+
+https://roderickvella.wordpress.com/2016/06/28/raspberry-pi-gpio-emulator/
