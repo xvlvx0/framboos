@@ -97,6 +97,10 @@ class Example(wx.Frame):
     def onConfig(self, e):
         self.Close()
 
+    def getVersion():
+        num = "git shortlog | grep -E '^[ ]+\w+' | wc -l"
+        return 
+
 def main():
     
     ex = wx.App()
