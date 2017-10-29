@@ -1,0 +1,8 @@
+# Error list
+ERROR 0			# From Main
+
+ERROR 1000		# From Interface
+
+ERROR 2000		# From GPIO
+
+ERROR 3000		# From Functions

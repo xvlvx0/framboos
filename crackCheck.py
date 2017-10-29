@@ -44,9 +44,3 @@ def setupGPIO():
 		traceback.print_exc()
 	finally:
 		GPIO.cleanup() #this ensures a clean exit
-
-def Main():
-
-Main()
-
-sys.exit()
