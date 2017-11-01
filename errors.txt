@@ -2,6 +2,7 @@
 ERROR 0			# From Main
 
 ERROR 1000		# From Interface
+ERROR 1001	getVersion()
 
 ERROR 2000		# From GPIO
 
