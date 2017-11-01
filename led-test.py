@@ -3,8 +3,9 @@
 
 import sys
 import time
-#from EmulatorGUI import GPIO	# imports the GPIO emulator, for testing only
-import RPi.GPIO as GPIO			# imports the Rasp GPIO module (General Purpose Input/Output)
+import traceback
+from GPIOEmulator.EmulatorGUI import GPIO	# imports the GPIO emulator, for testing only
+#import RPi.GPIO as GPIO			# imports the Rasp GPIO module (General Purpose Input/Output)
 
 LEDpinOne = 6
 LEDpinTwo = 21
@@ -34,7 +35,7 @@ def setupGPIO():
 			
 			counter -= 1
 	except Exception as ex:
-		print("ex: ")
+		traceback.print_exc()
 	finally:
 		GPIO.cleanup() #this ensures a clean exit
 
