@@ -38,7 +38,12 @@ def setupGPIO():
 	finally:
 		GPIO.cleanup() #this ensures a clean exit
 
-print("Going to blink....")
-setupGPIO()
-print("....exit")
-sys.exit()
+def main():
+	print("Going to blink....")
+	setupGPIO()
+	print("....exit")
+	sys.exit()	
+
+
+if __name__ == '__main__':
+	main()
