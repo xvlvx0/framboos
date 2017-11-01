@@ -34,7 +34,7 @@ def setupGPIO():
 			
 			counter -= 1
 	except Exception as ex:
-		traceback.print_exc()
+		print("ex: " + ex)
 	finally:
 		GPIO.cleanup() #this ensures a clean exit
 
