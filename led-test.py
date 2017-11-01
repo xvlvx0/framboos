@@ -8,6 +8,7 @@ import RPi.GPIO as GPIO			# imports the Rasp GPIO module (General Purpose Input/
 
 LEDpinOne = 6
 LEDpinTwo = 21
+print("Starting the LED test")
 
 def setupGPIO():
 	try:
@@ -19,16 +20,25 @@ def setupGPIO():
 		GPIO.setup(LEDpinOne, GPIO.OUT, initial = GPIO.HIGH)
 		GPIO.setup(LEDpinTwo, GPIO.OUT, initial = GPIO.LOW)
 
-		while(True):
+		counter = 10
+		while(counter>1):
+			print ("Counter: " + str(counter) + "\n")
+
 			GPIO.output(LEDpinOne,GPIO.HIGH)
 			GPIO.output(LEDpinTwo,GPIO.HIGH)
+			
 			time.sleep(10)
+			
 			GPIO.output(LEDpinOne,GPIO.LOW)
 			GPIO.output(LEDpinTwo,GPIO.LOW)
+			
+			counter -= 1
 	except Exception as ex:
 		traceback.print_exc()
 	finally:
 		GPIO.cleanup() #this ensures a clean exit
 
-
+print("Going to blink....")
+setupGPIO()
+print("....exit")
 sys.exit()
