@@ -8,3 +8,11 @@ https://github.com/dhruvvyas90/qemu-rpi-kernel/wiki
 https://github.com/dhruvvyas90/qemu-rpi-kernel
 
 https://roderickvella.wordpress.com/2016/06/28/raspberry-pi-gpio-emulator/
+
+
+# WX-python
+http://zetcode.com/wxpython/widgets/	
+https://wxpython.org/Phoenix/docs/html/wx.MenuBar.html
+https://wxpython.org/Phoenix/docs/html/wx.Menu.html
+http://docs.wxwidgets.org/3.0/classwx_menu_bar.html
+https://www.tutorialspoint.com/wxpython/wxpython_menus.htm

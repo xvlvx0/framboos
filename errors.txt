@@ -5,5 +5,7 @@ ERROR 1000		# From Interface
 ERROR 1001	getVersion()
 
 ERROR 2000		# From GPIO
+ERROR 2001	TypeChecker.py
+ERROR 2002	EmulatorGUI.py
 
 ERROR 3000		# From Functions

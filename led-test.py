@@ -1,11 +1,9 @@
-#!/usr/bin/python2.7
-# -*- coding: utf-8 -*-
-
+#!/usr/bin/python
 import sys
 import time
 import traceback
-from GPIOEmulator.EmulatorGUI import GPIO	# imports the GPIO emulator, for testing only
-#import RPi.GPIO as GPIO			# imports the Rasp GPIO module (General Purpose Input/Output)
+#from GPIOEmulator.EmulatorGUI import GPIO	# imports the GPIO emulator, for testing only
+import RPi.GPIO as GPIO			# imports the Rasp GPIOEmulatorIO module (General Purpose Input/Output)
 
 LEDpinOne = 6
 LEDpinTwo = 21
@@ -13,13 +11,13 @@ print("Starting the LED test")
 
 def setupGPIO():
 	try:
-		GPIO.setmode(GPIO.BOARD) 		# sets input to unified board pin numbers
-		#GPIO.setmode(GPIO.BCM)			# sets input to chip numbers, can differ per poard type
+		#GPIO.setmode(GPIO.BOARD) 		# sets input to unified board pin numbers
+		GPIO.setmode(GPIO.BCM)			# sets input to chip numbers, can differ per poard type
 
 		GPIO.setwarnings(False)
 
-		GPIO.setup(LEDpinOne, GPIO.OUT, initial = GPIO.HIGH)
-		GPIO.setup(LEDpinTwo, GPIO.OUT, initial = GPIO.LOW)
+		GPIO.setup(LEDpinOne, GPIO.OUT)
+		GPIO.setup(LEDpinTwo, GPIO.OUT)
 
 		counter = 10
 		while(counter>1):
