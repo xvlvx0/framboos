@@ -1,5 +1,0 @@
-# Packages needed
-
-wxPython
-funcsigs
-tk
