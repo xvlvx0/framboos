@@ -13,8 +13,8 @@ def setupGPIO(pin):
 
 	GPIO.setwarnings(False)
 
-	GPIO.setup(pinnr, GPIO.IN, pull_up_down = GPIO.PUD_UP)
-	#GPIO.setup(pinnr, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
+	#GPIO.setup(pinnr, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+	GPIO.setup(pinnr, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 
 def readPin(pin):
 	value = GPIO.input(pin)
