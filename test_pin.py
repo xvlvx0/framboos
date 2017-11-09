@@ -19,15 +19,18 @@ def setupGPIO(pin):
 		#GPIO.setup(pinnr, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 	except Exception as ex:
 		traceback.print_exc()
-	finally:
-		GPIO.cleanup() #this ensures a clean exit
+	else:
+		print("Sorry leaving the program\n")
+		sys.exit()
+		
 
 def readPin(pin):
 	value = GPIO.input(pin)
 	return value
 
 setupGPIO(pinnr)
-while(1):
+i = 10
+while(i>1):
 	print("reading state:....")
 	state = readPin(pinnr)
 	if state == True:
@@ -35,3 +38,7 @@ while(1):
 	else:
 		print("Pin is LOW\n")
 	time.sleep(1)
+	i -= 1
+print ("cleanup pins")
+GPIO.cleanup() #this ensures a clean exit
+sys.exit()
