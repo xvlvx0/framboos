@@ -2,8 +2,8 @@
 import sys
 import time
 import traceback
-from EmulatorGUI import GPIO	# imports the GPIO emulator, for testing only
-#import RPi.GPIO as GPIO		# imports the Rasp GPIO module (General Purpose Input/Output)
+#from GPIOEmulator.EmulatorGUI import GPIO	# imports the GPIO emulator, for testing only
+import RPi.GPIO as GPIO		# imports the Rasp GPIO module (General Purpose Input/Output)
 
 pinnr = 21			# GPIO pin number
 
@@ -32,4 +32,4 @@ while(1):
 		print("Pin is HIGH\n")
 	else:
 		print("Pin is LOW\n")
-	sleep(1)
+	time.sleep(1)
