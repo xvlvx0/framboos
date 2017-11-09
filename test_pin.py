@@ -8,19 +8,13 @@ pinnr = 21			# GPIO pin number
 
 def setupGPIO(pin):
 	print ("Setting up the GPIO pins\n")
-	try:
-		#GPIO.setmode(GPIO.BOARD) 		# sets input to unified board pin numbers
-		GPIO.setmode(GPIO.BCM)			# sets input to chip numbers, can differ per poard type
+	#GPIO.setmode(GPIO.BOARD) 		# sets input to unified board pin numbers
+	GPIO.setmode(GPIO.BCM)			# sets input to chip numbers, can differ per poard type
 
-		GPIO.setwarnings(False)
+	GPIO.setwarnings(False)
 
-		GPIO.setup(pinnr, GPIO.IN, pull_up_down = GPIO.PUD_UP)
-		#GPIO.setup(pinnr, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
-	except Exception as ex:
-		print("error: " + str(ex))
-	else:
-		print("Sorry leaving the program\n")
-		sys.exit()
+	GPIO.setup(pinnr, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+	#GPIO.setup(pinnr, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 
 def readPin(pin):
 	value = GPIO.input(pin)
