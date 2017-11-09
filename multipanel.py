@@ -28,6 +28,7 @@ class Example(wx.Frame):
         DataWindow = wx.BoxSizer(wx.HORIZONTAL)
         VirtBoxData.Add(DataWindow, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
 
+        '''Add extra space'''
         #VirtBoxData.Add((-1, 10))
 
         '''Name box for logwindow'''
@@ -37,6 +38,7 @@ class Example(wx.Frame):
         HorBoxLog.Add(StaticTextLog)
         VirtBoxData.Add(HorBoxLog, flag=wx.LEFT | wx.TOP, border=10)
 
+        '''Add extra space'''
         #VirtBoxData.Add((-1, 10))
 
         '''LogWindow'''
@@ -46,6 +48,7 @@ class Example(wx.Frame):
         VirtBoxData.Add(LogWindow, proportion=1, flag=wx.LEFT|wx.RIGHT|wx.EXPAND, 
             border=10)
 
+        '''Add extra space'''
         #VirtBoxData.Add((-1, 25))
 
         # '''Add 3 check boxes'''
