@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import sys
 import time
-import traceback
 #from GPIOEmulator.EmulatorGUI import GPIO	# imports the GPIO emulator, for testing only
 import RPi.GPIO as GPIO		# imports the Rasp GPIO module (General Purpose Input/Output)
 
@@ -18,11 +17,10 @@ def setupGPIO(pin):
 		GPIO.setup(pinnr, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 		#GPIO.setup(pinnr, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 	except Exception as ex:
-		traceback.print_exc()
+		print("error: " + str(ex))
 	else:
 		print("Sorry leaving the program\n")
 		sys.exit()
-		
 
 def readPin(pin):
 	value = GPIO.input(pin)
