@@ -7,7 +7,7 @@ import RPi.GPIO as GPIO		# imports the Rasp GPIO module (General Purpose Input/O
 pinnr1 = 21			# GPIO pin number
 pinnr2 = 26			# GPIO pin number
 
-def setupGPIO(pin):
+def setupGPIO():
 	print ("Setting up the GPIO pins\n")
 	#GPIO.setmode(GPIO.BOARD) 		# sets input to unified board pin numbers
 	GPIO.setmode(GPIO.BCM)			# sets input to chip numbers, can differ per poard type
@@ -18,7 +18,7 @@ def setupGPIO(pin):
 	GPIO.setup(pinnr1, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 	GPIO.setup(pinnr2, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 
-def readPin(pin):
+def readPin():
 	value = GPIO.input(pin)
 	return value
 
