@@ -18,7 +18,7 @@ def setupGPIO():
 	GPIO.setup(pinnr1, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 	GPIO.setup(pinnr2, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 
-def readPin():
+def readPin(pin):
 	value = GPIO.input(pin)
 	return value
 
