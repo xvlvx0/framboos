@@ -32,7 +32,7 @@ while(1):
 	state2 = readPin(pinnr2)
 	state3 = readPin(pinnr3)
 
-	print("Pin1 is %,\tPin2 is %,\tPin3 is %.\n", str(state1), str(state2), str(state3))
+	print("Pin1 is %s, Pin2 is %s, Pin3 is %s.\n", str(state1), str(state2), str(state3))
 	
 	time.sleep(1)
 
