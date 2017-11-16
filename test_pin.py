@@ -33,9 +33,11 @@ while(counter < 120):
 	state2 = readPin(pinnr2)
 	state3 = readPin(pinnr3)
 
-	print(counter + " ,Pin1 is " + str(state1) + ", Pin2 is " + str(state2) + ", Pin3 is " + str(state3) + ".\n")
+	print(str(counter) + " ,Pin1 is " + str(state1) + ", Pin2 is " + str(state2) + ", Pin3 is " + str(state3) + ".\n")
 	
 	time.sleep(0.5)
+
+	counter += 1
 
 print ("cleanup pins")
 GPIO.cleanup() #this ensures a clean exit
