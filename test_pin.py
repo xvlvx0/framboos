@@ -15,10 +15,10 @@ def setupGPIO():
 
 	GPIO.setwarnings(False)
 
-	#GPIO.setup(pinnr, GPIO.IN, pull_up_down = GPIO.PUD_UP)
-	#GPIO.setup(pinnr1, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
-	GPIO.setup(pinnr1, GPIO.IN)
-	GPIO.setup(pinnr2, GPIO.IN)
+	GPIO.setup(pinnr1, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+	GPIO.setup(pinnr2, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
+	#GPIO.setup(pinnr1, GPIO.IN)
+	#GPIO.setup(pinnr2, GPIO.IN)
 	GPIO.setup(pinnr3, GPIO.IN)
 
 def readPin(pin):
@@ -27,14 +27,15 @@ def readPin(pin):
 
 setupGPIO()
 print("reading state:....")
-while(1):
+counter = 0
+while(counter < 120):
 	state1 = readPin(pinnr1)
 	state2 = readPin(pinnr2)
 	state3 = readPin(pinnr3)
 
-	print("Pin1 is " + str(state1) + ", Pin2 is " + str(state2) + ", Pin3 is " + str(state3) + ".\n")
+	print(counter + " ,Pin1 is " + str(state1) + ", Pin2 is " + str(state2) + ", Pin3 is " + str(state3) + ".\n")
 	
-	time.sleep(1)
+	time.sleep(0.5)
 
 print ("cleanup pins")
 GPIO.cleanup() #this ensures a clean exit
