@@ -15,10 +15,10 @@ def setupGPIO():
 
 	GPIO.setwarnings(False)
 
-	GPIO.setup(pinnr1, GPIO.IN, pull_up_down = GPIO.PUD_UP)
-	GPIO.setup(pinnr2, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
-	#GPIO.setup(pinnr1, GPIO.IN)
-	#GPIO.setup(pinnr2, GPIO.IN)
+	#GPIO.setup(pinnr1, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+	#GPIO.setup(pinnr2, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
+	GPIO.setup(pinnr1, GPIO.IN)
+	GPIO.setup(pinnr2, GPIO.IN)
 	GPIO.setup(pinnr3, GPIO.IN)
 
 def readPin(pin):
@@ -33,7 +33,7 @@ while(counter < 120):
 	state2 = readPin(pinnr2)
 	state3 = readPin(pinnr3)
 
-	print(str(counter) + " ,Pin1 is " + str(state1) + ", Pin2 is " + str(state2) + ", Pin3 is " + str(state3) + ".\n")
+	print(str(counter) + " - " + str(state1) + " - " + str(state2) + " - " + str(state3) + ".\n")
 	
 	time.sleep(0.5)
 
