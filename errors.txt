@@ -1,11 +1,11 @@
 # Error list
-ERROR 0			# From Main
+ERROR 0		### From Main
 
-ERROR 1000		# From Interface
-ERROR 1001	getVersion()
+ERROR 1000	### From Interface
+ERROR 1001		getVersion()
 
-ERROR 2000		# From GPIO
-ERROR 2001	TypeChecker.py
-ERROR 2002	EmulatorGUI.py
+ERROR 2000	### From GPIO
+ERROR 2001		TypeChecker.py
+ERROR 2002		EmulatorGUI.py
 
-ERROR 3000		# From Functions
+ERROR 3000	### From Functions
