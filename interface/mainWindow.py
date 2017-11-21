@@ -17,38 +17,48 @@ class MainWindow(wx.Frame):
 	def __init__(self, *args, **kwargs):
 		super(MainWindow, self).__init__(*args, **kwargs) 
 		
-		self.InitUI()			# Set the base parameters
-		self.InitMenuBar()		# Setup the menubar
-		self.InitXY()			# Show the x,y position of the top left corner of the panel
-		#self.InitPanel()		# Setup the actual connectors
-		#self.InitLogPanel()	# Start the logpanel
-
-	def InitUI(self):
 		'''Panel size, posiiton, title'''
 		self.SetTitle('Crack Initiation')
 		self.SetSize((500, 500))
 		self.Centre()
 		self.Show(True)
+		
+		self.InitMenuBar()		# Setup the menubar
+		#self.InitXY()			# Show the x,y position of the top left corner of the panel
+		#self.InitPanel()		# Setup the actual connectors
+		#self.InitLogPanel()	# Start the logpanel
 
 	def InitMenuBar(self):
 		menubar = wx.MenuBar()
+		
+		menuFile = wx.Menu()
+		menuEdit = wx.Menu()
+		menuHelp = wx.Menu()
+		
 		''' Menubar - File '''
-		fileMenu = wx.Menu()
 		# Quit
-		menuQuit = wx.MenuItem(fileMenu, APP_EXIT, '&Quit\tCtrl+Q')
-		fileMenu.AppendItem(menuQuit)
+		subFile_Quit = wx.MenuItem(menuFile, APP_EXIT, '&Quit\tCtrl+Q')
+		menuFile.AppendItem(subFile_Quit)
 		self.Bind(wx.EVT_MENU, self.OnQuit, id=APP_EXIT)
-		# Config
-		menuConfig = wx.MenuItem(fileMenu, CONFIG_CRACK, 'Config\tAlt+F')
-		fileMenu.AppendItem(menuConfig)
+		###
+		menubar.Append(menuFile, '&File')
+
+		''' Menubar - Edit '''
+		# Configd result
+		subEdit_Config = wx.MenuItem(menuEdit, CONFIG_CRACK, 'Config\tAlt+C')
+		menuEdit.AppendItem(subEdit_Config)
 		self.Bind(wx.EVT_MENU, self.onConfig, id=CONFIG_CRACK)
-		menubar.Append(fileMenu, '&File')
+		###
+		menubar.Append(menuEdit, '&Edit')
 		
 		''' Menubar - Help '''
-		menuHelp = wx.Menu()
+		# About
 		menuHelp.Append(100, '&About')
 		self.Bind(wx.EVT_MENU, self.OnAboutBox, id=100)
+		###
 		menubar.Append(menuHelp, '&Help')
+		
+		''' Finish the menubar '''
 		self.SetMenuBar(menubar)
 	
 	def InitXY(self):
@@ -92,11 +102,11 @@ class MainWindow(wx.Frame):
 		MouseXYtext3 = wx.StaticText(self, label='y:', pos=(160,25))
 		MouseXYWindow.Add(MouseXYtext3, flag=wx.RIGHT, border=8)
 		
-		self.MouseXYtext4 = wx.StaticText(self, label='0', pos=(130, 25))
-		MouseXYWindow.Add(MouseXYtext4, flag=wx.RIGHT, border=8)
+		#self.MouseXYtext4 = wx.StaticText(self, label='0', pos=(130, 25))
+		#MouseXYWindow.Add(MouseXYtext4, flag=wx.RIGHT, border=8)
 		
-		self.MouseXYtext5 = wx.StaticText(self, label='0', pos=(170, 25))
-		MouseXYWindow.Add(MouseXYtext5, flag=wx.RIGHT, border=8)
+		#self.MouseXYtext5 = wx.StaticText(self, label='0', pos=(170, 25))
+		#MouseXYWindow.Add(MouseXYtext5, flag=wx.RIGHT, border=8)
 		
 		self.Bind(wx.EVT_MOTION, self.OnMouseMove)
 
@@ -214,6 +224,6 @@ class MainWindow(wx.Frame):
 		self.cpnl.Refresh()
 
 if __name__ == '__main__':
-	ex = wx.App()
-	MainWindow(None)
-	ex.MainLoop()
+	app = wx.App()		# Manditory for wx
+	MainWindow(None)	# Call the class, None means parent frame
+	app.MainLoop()		# Call the App() as a mainloop, catch all
