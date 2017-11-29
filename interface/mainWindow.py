@@ -3,6 +3,7 @@
 
 import os
 import wx
+import wx.lib.inspection
 import subprocess   # interaction with the operating
 import logging	  # logging module: Debug, Info, Warning, Error, Critical
 
@@ -24,9 +25,10 @@ class MainWindow(wx.Frame):
 		self.Show(True)
 		
 		self.InitMenuBar()		# Setup the menubar
-		#self.InitXY()			# Show the x,y position of the top left corner of the panel
-		#self.InitPanel()		# Setup the actual connectors
-		#self.InitLogPanel()	# Start the logpanel
+		#self.InitStatusBar()	# Setup the statusbar
+		self.InitPanel()
+		self.InitXY()			# Show the x,y position of the top left corner of the panel
+		self.InitMouse()		# Show the actual x,y position of the mouse
 
 	def InitMenuBar(self):
 		menubar = wx.MenuBar()
@@ -60,98 +62,34 @@ class MainWindow(wx.Frame):
 		
 		''' Finish the menubar '''
 		self.SetMenuBar(menubar)
-	
-	def InitXY(self):
-		#panel = wx.Panel(self)
 
-		font = wx.SystemSettings_GetFont(wx.SYS_SYSTEM_FONT)
-		font.SetPointSize(9)
-
-		VirtBoxXY = wx.BoxSizer(wx.VERTICAL)
-
-		'''XY Panel coordinates'''
-		xyWindow = wx.BoxSizer(wx.HORIZONTAL)
-
-		xyText1 = wx.StaticText(self, label='Panel Location, ', pos=(5,5))
-		xyWindow.Add(xyText1, flag=wx.RIGHT, border=8)
-		
-		xyText2 = wx.StaticText(self, label='x:', pos=(120,5))
-		xyWindow.Add(xyText2, flag=wx.RIGHT, border=8)
-		
-		xyText3 = wx.StaticText(self, label='y:', pos=(160,5))
-		xyWindow.Add(xyText3, flag=wx.RIGHT, border=8)
-		
-		self.xyText4 = wx.StaticText(self, label='0', pos=(130, 5))
-		self.xyText5 = wx.StaticText(self, label='0', pos=(170, 5))
-		self.Bind(wx.EVT_MOVE, self.OnMove)
-
-		VirtBoxXY.Add(xyWindow, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
-
-		'''Add extra space'''
-		#VirtBoxData.Add((-1, 10))
-
-		# '''XY Mouse coordinates'''
-		MouseXYWindow = wx.BoxSizer(wx.HORIZONTAL)
-
-		MouseXYtext1 = wx.StaticText(self, label='Mouse Location, ', pos=(5,25))
-		MouseXYWindow.Add(MouseXYtext1, flag=wx.RIGHT, border=8)
-		
-		MouseXYtext2 = wx.StaticText(self, label='x:', pos=(120,25))
-		MouseXYWindow.Add(MouseXYtext2, flag=wx.RIGHT, border=8)
-		
-		MouseXYtext3 = wx.StaticText(self, label='y:', pos=(160,25))
-		MouseXYWindow.Add(MouseXYtext3, flag=wx.RIGHT, border=8)
-		
-		#self.MouseXYtext4 = wx.StaticText(self, label='0', pos=(130, 25))
-		#MouseXYWindow.Add(MouseXYtext4, flag=wx.RIGHT, border=8)
-		
-		#self.MouseXYtext5 = wx.StaticText(self, label='0', pos=(170, 25))
-		#MouseXYWindow.Add(MouseXYtext5, flag=wx.RIGHT, border=8)
-		
-		self.Bind(wx.EVT_MOTION, self.OnMouseMove)
-
-		VirtBoxXY.Add(MouseXYWindow, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
-
-		'''Add everyting to the panel'''
-		#panel.SetSizer(VirtBoxXY)
-		self.SetSizer(VirtBoxXY)
+	def InitStatusBar(self):
+		statusbar = self.CreateStatusBar()
+		#self.statusbar.SetStatusText('This goes in your statusbar')
 
 	def InitPanel(self):
-		panel = wx.Panel(self)
-
+		self.panel = wx.Panel(self)
 		font = wx.SystemSettings_GetFont(wx.SYS_SYSTEM_FONT)
 		font.SetPointSize(9)
 
-		VirtBoxData = wx.BoxSizer(wx.VERTICAL)
+	def InitXY(self):
+		'''XY Panel coordinates'''
+		xyText1 = wx.StaticText(self.panel, label='Panel Location', pos=(5,5))
+		xyText2 = wx.StaticText(self.panel, label='x:', pos=(120,5))
+		xyText3 = wx.StaticText(self.panel, label=', y:', pos=(165,5))
+		self.xyText4 = wx.StaticText(self.panel, label='0', pos=(132, 5))
+		self.xyText5 = wx.StaticText(self.panel, label='0', pos=(185, 5))
+		self.Bind(wx.EVT_MOVE, self.OnMove)
 
-		'''DataWindow'''
-		DataWindow = wx.BoxSizer(wx.HORIZONTAL)
-		# self.col = wx.Colour(0, 0, 0)
-		# buttonOne = wx.ToggleButton(panel, label='conn1', pos=(5, 100))
-		# self.cpnl  = wx.Panel(panel, pos=(5, 150), size=(110, 110))
-		# self.cpnl.SetBackgroundColour(self.col)
-		# buttonOne.Bind(wx.EVT_TOGGLEBUTTON, self.ToggleOnOff)
-		VirtBoxData.Add(DataWindow, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
-
-		#VirtBoxData.Add((-1, 10))
-
-		'''Name box for logwindow'''
-		HorBoxLog = wx.BoxSizer(wx.HORIZONTAL)
-		StaticTextLog = wx.StaticText(panel, label='Log:')
-		StaticTextLog.SetFont(font)
-		HorBoxLog.Add(StaticTextLog)
-		VirtBoxData.Add(HorBoxLog, flag=wx.LEFT | wx.TOP, border=10)
-
-		#VirtBoxData.Add((-1, 10))
-
-		'''LogWindow'''
-		LogWindow = wx.BoxSizer(wx.HORIZONTAL)
-		ActiveTextLog = wx.TextCtrl(panel, style=wx.TE_MULTILINE)
-		LogWindow.Add(ActiveTextLog, proportion=1, flag=wx.EXPAND)
-		VirtBoxData.Add(LogWindow, proportion=1, flag=wx.LEFT|wx.RIGHT|wx.EXPAND, 
-			border=10)
-
-		#VirtBoxData.Add((-1, 25))
+	def InitMouse(self):
+		# '''XY Mouse coordinates'''
+		MouseXYtext1 = wx.StaticText(self.panel, label='Mouse Location', pos=(5,25))
+		MouseXYtext2 = wx.StaticText(self.panel, label='x:', pos=(120,25))
+		MouseXYtext3 = wx.StaticText(self.panel, label=', y:', pos=(165,25))
+		self.MouseXYtext4 = wx.StaticText(self.panel, label='0', pos=(132, 25))
+		self.MouseXYtext5 = wx.StaticText(self.panel, label='0', pos=(185, 25))
+		#self.Bind(wx.EVT_MOTION, self.OnMouseMove)
+		self.Bind(wx.EVT_SET_CURSOR, self.OnMouseMove)
 
 	def getVersion(self):
 		# path = os.path.dirname(os.path.abspath(__file__))
@@ -170,7 +108,7 @@ class MainWindow(wx.Frame):
 		#	 return versie
 		#	 logging.debug("Versie: " + str(versie))
 		#	 logging.debug('...done')
-		return str(12)
+		return "V0.99."+str(30)
 
 	def OnAboutBox(self, event):
 		#logging.debug("OnAboutBox, event: " + repr(event))
@@ -203,27 +141,15 @@ class MainWindow(wx.Frame):
 		self.xyText5.SetLabel(str(y))
 
 	def OnMouseMove(self, event):
-		mouseX = wx.GetMousePosition().x;
-		mouseY = wx.GetMousePosition().y;
+		mouseX, mouseY = wx.GetMousePosition();
 		self.MouseXYtext4.SetLabel(str(mouseX))
 		self.MouseXYtext5.SetLabel(str(mouseY))
 
-	def ToggleOnOff(self, event):
-		obj = event.GetEventObject()
-		isPressed = obj.GetValue()
-		
-		green = self.col.Green()
-		blue = self.col.Red()
-		
-		if isPressed:
-			self.col.Set(255, green, blue)
-		else:
-			self.col.Set(0, green, blue)
-			
-		self.cpnl.SetBackgroundColour(self.col)
-		self.cpnl.Refresh()
+	def OnLeftDown(self, event):
+		print('*')
 
 if __name__ == '__main__':
 	app = wx.App()		# Manditory for wx
 	MainWindow(None)	# Call the class, None means parent frame
+	#wx.lib.inspection.InspectionTool().Show()
 	app.MainLoop()		# Call the App() as a mainloop, catch all
