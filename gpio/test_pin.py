@@ -27,7 +27,7 @@ def readPin(pin):
 	value = GPIO.input(pin)
 	return value
 
-setupGPIO_INPUT()
+setupGPIO_INPUT(pins)
 print("reading state:....")
 counter = 0
 while(counter < 120):
