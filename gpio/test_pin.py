@@ -32,7 +32,7 @@ print("reading state:....")
 counter = 0
 while(counter < 120):
 	for pin in pins:
-		state = readPin(pinn)
+		state = readPin(pin)
 		print(str(counter) + " - " + str(state1))
 	
 	time.sleep(0.5)
