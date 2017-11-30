@@ -9,7 +9,7 @@ pinnr1 = 15			# GPIO pin number
 #pinnr3 = 26			# GPIO pin number
 pins = {pinnr1}
 
-def setupGPIO_IN(pins):
+def setupGPIO_INPUT(pins):
 	print ("Setting up the GPIO pins\n")
 	#GPIO.setmode(GPIO.BOARD) 		# sets input to unified board pin numbers
 	GPIO.setmode(GPIO.BCM)			# sets input to chip numbers, can differ per poard type
@@ -27,7 +27,7 @@ def readPin(pin):
 	value = GPIO.input(pin)
 	return value
 
-setupGPIO()
+setupGPIO_INPUT()
 print("reading state:....")
 counter = 0
 while(counter < 120):
