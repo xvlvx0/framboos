@@ -4,7 +4,7 @@ import time
 #from GPIOEmulator.EmulatorGUI import GPIO	# imports the GPIO emulator, for testing only
 import RPi.GPIO as GPIO		# imports the Rasp GPIO module (General Purpose Input/Output)
 
-pinnr1 = 15			# GPIO pin number
+pinnr1 = 18			# GPIO pin number
 #pinnr2 = 21			# GPIO pin number
 #pinnr3 = 26			# GPIO pin number
 pins = {pinnr1}
