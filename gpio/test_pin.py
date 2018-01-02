@@ -4,10 +4,24 @@ import time
 #from GPIOEmulator.EmulatorGUI import GPIO	# imports the GPIO emulator, for testing only
 import RPi.GPIO as GPIO		# imports the Rasp GPIO module (General Purpose Input/Output)
 
-pinnr1 = 18			# GPIO pin number
-#pinnr2 = 21			# GPIO pin number
-#pinnr3 = 26			# GPIO pin number
-pins = {pinnr1}
+conn01 = 18			# GPIO pin number
+conn02 = 23			# GPIO pin number
+conn03 = 24			# GPIO pin number
+conn04 = 25			# GPIO pin number
+conn05 = 12			# GPIO pin number
+conn06 = 5			# GPIO pin number
+conn07 = 19			# GPIO pin number
+conn08 = 13			# GPIO pin number
+conn09 = 6			# GPIO pin number
+conn10 = 26			# GPIO pin number
+conn11 = 22			# GPIO pin number
+conn12 = 27			# GPIO pin number
+conn13 = 17			# GPIO pin number
+conn14 = 4			# GPIO pin number
+pins = { conn01, conn02, conn03, conn04,
+		conn05, conn06, conn07, conn08,
+		conn09, conn10, conn11, conn12,
+		conn13, conn14 }
 
 def setupGPIO_INPUT(pins):
 	print ("Setting up the GPIO pins\n")
