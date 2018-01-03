@@ -48,14 +48,12 @@ class Mywin(wx.Frame):
         hzFirstBox = wx.StaticBox(panel, -1, 'Conn-1:')
         i = 1
         for conn in connectors:
-            butConn1 = wx.ToggleButton(panel, 1, , (20, 25))
+            butConn1 = wx.ToggleButton(panel, 1, (20, 25))
             hzFirstBox.Add(butConn1, 0, wx.ALL|wx.LEFT, 10)
 
         hzSecondBox = wx.StaticBox(panel, -1, 'Conn-1:')
         while (i<(connectors/2)):
-
-
-        connectorboxSizer.Add(connectorbox, 0, wx.ALL|wx.LEFT, 10)
+            connectorboxSizer.Add(connectorbox, 0, wx.ALL|wx.LEFT, 10)
 
 
         

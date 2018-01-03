@@ -7,7 +7,7 @@ import wx.lib.inspection
 import subprocess   # interaction with the operating
 import logging	  # logging module: Debug, Info, Warning, Error, Critical
 
-logging.basicConfig(filename='logs/crackInitiation.log' ,level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename='/home/loek/github/framboos/logs/crackInitiation.log' ,level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 #logging.disable(logging.ERROR)
 logging.debug('Start of program')
 
