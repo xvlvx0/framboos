@@ -15,10 +15,6 @@ class ShapedButton(wx.PyControl):
         self.Bind(wx.EVT_SIZE, self.on_size)
         self.Bind(wx.EVT_PAINT, self.on_paint)
         self.Bind(wx.EVT_LEFT_DOWN, self.on_left_down)
-        #self.Bind(wx.EVT_LEFT_DCLICK, self.on_left_dclick)
-        #self.Bind(wx.EVT_LEFT_UP, self.on_left_up)
-        #self.Bind(wx.EVT_MOTION, self.on_motion)
-        #self.Bind(wx.EVT_LEAVE_WINDOW, self.on_leave_window)
 
     def DoGetBestSize(self):
         return self.normal.GetSize()
@@ -67,39 +63,27 @@ class ShapedButton(wx.PyControl):
             self.clicked = not self.clicked
             print 'clicked is: ' + str(self.clicked)
 
-    #def on_left_dclick(self, event):
-    #    self.on_left_down(event)
-
-    #def on_left_up(self, event):
-    #    if self.clicked:
-    #        x, y = event.GetPosition()
-    #        if self.region.Contains(x, y):
-    #            self.post_event()
-    #    self.clicked = False
-
-    #def on_motion(self, event):
-    #    if self.clicked:
-    #        x, y = event.GetPosition()
-    #        if not self.region.Contains(x, y):
-    #            self.clicked = False
-
-    #def on_leave_window(self, event):
-    #    self.clicked = False
-
 def main():
     def on_button(event):
         print 'Button was clicked.'
     app = wx.App()
     frame = wx.Frame(None, -1, 'Shaped Button Demo')
     panel = wx.Panel(frame, -1)
-    button = ShapedButton(panel, 
-        wx.Bitmap('Switch_OFF.png'), 
-        wx.Bitmap('Switch_ON.png'), 
-        wx.Bitmap('Switch_GRAY.png'))
-    button.Bind(wx.EVT_BUTTON, on_button)
     sizer = wx.BoxSizer(wx.VERTICAL)
     sizer.AddStretchSpacer(1)
-    sizer.Add(button, 0, wx.ALIGN_CENTER)
+
+    buttonNames = []
+    for i in range(0, 10):
+        buttonNames.append('button'+str(i))
+        
+    for bName in buttonNames:
+        bName = ShapedButton(panel, 
+                    wx.Bitmap('Switch_OFF.png'), 
+                    wx.Bitmap('Switch_ON.png'), 
+                    wx.Bitmap('Switch_GRAY.png'))
+        bName.Bind(wx.EVT_BUTTON, on_button)
+        sizer.Add(bName, 0, wx.ALIGN_CENTER)
+
     sizer.AddStretchSpacer(1)
     panel.SetSizer(sizer)
     frame.Show()
