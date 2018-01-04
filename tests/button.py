@@ -61,11 +61,11 @@ class ShapedButton(wx.PyControl):
         x, y = event.GetPosition()
         if self.region.Contains(x, y):
             self.clicked = not self.clicked
-            print 'clicked is: ' + str(self.clicked)
+            print('clicked is: ' + str(self.clicked))
 
 def main():
     def on_button(event):
-        print 'Button was clicked.'
+        print('Button was clicked.')
     app = wx.App()
     frame = wx.Frame(None, -1, 'Shaped Button Demo')
     panel = wx.Panel(frame, -1)
